@@ -5,9 +5,9 @@ import App from './App'
 import router from './router'
 
 import dataV from '@jiaminghi/data-view'
-import echarts from 'echarts'
+import VCharts from 'v-charts'
 
-Vue.prototype.$echarts = echarts
+Vue.use(VCharts)
 Vue.use(dataV)
 Vue.config.productionTip = false
 
