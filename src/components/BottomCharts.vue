@@ -3,14 +3,12 @@
     <div class="bc-chart-item">
       <div class="bcci-header">赵钱收费站</div>
       <dv-active-ring-chart :config="config1" />
-      <Label-Tag :config="labelConfig" />
     </div>
     <dv-decoration-2 class="decoration-1" :reverse="true" style="width:5px;" />
 
     <div class="bc-chart-item">
       <div class="bcci-header">孙李收费站</div>
       <dv-active-ring-chart :config="config2" />
-      <Label-Tag :config="labelConfig" />
     </div>
 
     <dv-decoration-2 class="decoration-2" :reverse="true" style="width:5px;" />
@@ -18,7 +16,6 @@
     <div class="bc-chart-item">
       <div class="bcci-header">周吴收费站</div>
       <dv-active-ring-chart :config="config3" />
-      <Label-Tag :config="labelConfig" />
     </div>
 
     <dv-decoration-2 class="decoration-3" :reverse="true" style="width:5px;" />

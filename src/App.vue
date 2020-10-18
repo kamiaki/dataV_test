@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     toMainPage () {
-      this.$router.push('/')
+      // 设置导航到那个初始页面
     }
   }
 }

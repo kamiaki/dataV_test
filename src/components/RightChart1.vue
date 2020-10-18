@@ -1,14 +1,11 @@
 <template>
   <div class="right-chart-1">
-    <div class="rc1-header">赵六收费站</div>
-
-    <div class="rc1-chart-container">
-      <div class="left">
-        <div class="number">262</div>
-        <div>设备运行总数</div>
-      </div>
-
-      <dv-capsule-chart class="right" :config="config" />
+    <div class="rc1-header" style="flex-grow: 0">赵六收费站</div>
+    <div style="flex-grow: 1;background-color: darkgray">
+      <ve-pie :data="chartData"
+              height="100%"
+              :settings="chartSettings"
+              :extend="chartExtend"></ve-pie>
     </div>
   </div>
 </template>
@@ -17,31 +14,30 @@
 export default {
   name: 'RightChart1',
   data () {
+    this.chartExtend = {
+      grid: {
+        top: 50,
+        left: 10,
+        right: 10,
+        bottom: 10
+      }
+    }
+    this.chartSettings = {
+      offsetY: 60,
+      legendLimit: 0,
+      radius: 30
+    }
     return {
-      config: {
-        data: [
-          {
-            name: '收费系统',
-            value: 25
-          },
-          {
-            name: '通信系统',
-            value: 66
-          },
-          {
-            name: '监控系统',
-            value: 123
-          },
-          {
-            name: '供配电系统',
-            value: 72
-          },
-          {
-            name: '其他',
-            value: 99
-          }
-        ],
-        unit: '件'
+      chartData: {
+        columns: ['日期', '访问用户'],
+        rows: [
+          { '日期': '1/1', '访问用户': 1393 },
+          { '日期': '1/2', '访问用户': 3530 },
+          { '日期': '1/3', '访问用户': 2923 },
+          { '日期': '1/4', '访问用户': 1723 },
+          { '日期': '1/5', '访问用户': 3792 },
+          { '日期': '1/6', '访问用户': 4593 }
+        ]
       }
     }
   }
@@ -60,34 +56,6 @@ export default {
     font-weight: bold;
     height: 30px;
     line-height: 30px;
-  }
-
-  .rc1-chart-container {
-    flex: 1;
-    display: flex;
-  }
-
-  .left {
-    width: 30%;
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .number {
-      font-size: 34px;
-      color: #096dd9;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-  }
-
-  .right {
-    flex: 1;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    box-sizing: border-box;
   }
 }
 </style>
