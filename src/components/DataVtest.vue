@@ -165,6 +165,8 @@ export default {
     .rmc-top-container {
       height: 65%;
       display: flex;
+      /*默认*/
+      flex-direction: row;
     }
     .rmctc-left-container {
       width: 65%;
