@@ -1,12 +1,14 @@
 <template>
   <div class="left-chart-1">
-    <div>我是标题</div>
-    <div>我是副标题</div>
-    <ve-line
-      :data="chartData"
-      height="100%"
-      :extend="chartExtend"></ve-line>
-    <dv-decoration-2 style="height:10px;" />
+    <div style="flex-grow: 0">我是标题</div>
+    <div style="flex-grow: 0">我是副标题</div>
+    <div style="flex-grow: 1;background-color: royalblue">
+      <ve-line
+        :data="chartData"
+        height="100%"
+        :extend="chartExtend"></ve-line>
+    </div>
+    <dv-decoration-2 style="height:10px;flex-grow: 0" />
   </div>
 </template>
 

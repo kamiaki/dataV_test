@@ -26,20 +26,15 @@
     <div class="bc-chart-item">
       <div class="bcci-header">郑王收费站</div>
       <dv-active-ring-chart :config="config4" />
-      <Label-Tag :config="labelConfig" />
     </div>
 
   </div>
 </template>
 
 <script>
-import LabelTag from './LabelTag'
 
 export default {
   name: 'BottomCharts',
-  components: {
-    LabelTag
-  },
   data () {
     return {
       config1: {
