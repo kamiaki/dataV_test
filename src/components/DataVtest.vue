@@ -1,37 +1,63 @@
 <template>
   <div id="data-view">
+    <!--全屏容器-->
     <dv-full-screen-container>
 
+      <!--头部-->
       <div class="main-header">
         <div class="mh-left">
-          技术支持:
-          <a href="https://github.com/jiaming743/DataV">
-            https://github.com/jiaming743/DataV
-          </a>
+          作者:Aki
         </div>
-        <div class="mh-middle">
-          机电设备电子档案
-        </div>
+        <div class="mh-middle">雷电项目</div>
         <div class="mh-right">
-          <dv-border-box-7
+          <dv-border-box-2
             style="width: 120px; height: 50px;
             line-height: 50px; text-align:center;
-            margin-left:200px;"
-          >
+            margin-left:200px;">
             综合管理台
-          </dv-border-box-7>
+          </dv-border-box-2>
         </div>
       </div>
 
+      <!--内容主体-->
       <dv-border-box-1 class="main-container">
+
+        <!--左边内容-->
         <dv-border-box-3 class="left-chart-container">
-
-          <Left-Chart-1 />
-          <Left-Chart-2 />
-          <Left-Chart-3 />
-
+          <Left-Chart-1/>
+          <Left-Chart-2/>
+          <Left-Chart-3/>
         </dv-border-box-3>
 
+        <!--右边内容-->
+        <div class="right-main-container">
+
+          <!--右 上-->
+          <div class="rmc-top-container">
+            <!--右上 左-->
+            <dv-border-box-3 class="rmctc-left-container">
+              <Center-Cmp/>
+            </dv-border-box-3>
+            <!--右上 右-->
+            <div class="rmctc-right-container">
+              <!--右上右 1-->
+              <dv-border-box-3 class="rmctc-chart-1">
+                <Right-Chart-1/>
+              </dv-border-box-3>
+              <!--右上右 2-->
+              <!--:reverse="true" 代表边框镜像-->
+              <dv-border-box-4 class="rmctc-chart-2" :reverse="true">
+                <Right-Chart-2/>
+              </dv-border-box-4>
+            </div>
+          </div>
+
+          <!--右 下-->
+          <dv-border-box-4 class="rmc-bottom-container">
+            <Bottom-Charts/>
+          </dv-border-box-4>
+
+        </div>
       </dv-border-box-1>
 
     </dv-full-screen-container>
@@ -39,40 +65,61 @@
 </template>
 
 <script>
+import LeftChart1 from './LeftChart1'
+import LeftChart2 from './LeftChart2'
+import LeftChart3 from './LeftChart3'
+import CenterCmp from './CenterCmp'
+import RightChart1 from './RightChart1'
+import RightChart2 from './RightChart2'
+import BottomCharts from './BottomCharts'
+
 export default {
-  name: 'DataVtest',
+  name: 'DataView',
+  components: {
+    LeftChart1,
+    LeftChart2,
+    LeftChart3,
+    CenterCmp,
+    RightChart1,
+    RightChart2,
+    BottomCharts
+  },
   data () {
     return {}
   }
 }
 </script>
 
-<style scoped lang="less">
+<!--不能写scoped，不然工用style无法修改这个组件-->
+<style lang="less">
+  /*最外层*/
   #data-view {
     width: 100%;
     height: 100%;
-    background-color: #bf2256;
-    color: #747474;
+    background-color: #030409;
+    color: #fff;
 
+    /*全屏容器*/
     #dv-full-screen-container {
       background-image: url('../assets/bg.png');
       background-size: 100% 100%;
       box-shadow: 0 0 3px blue;
+      /*伸缩布局*/
       display: flex;
-      /*主轴为垂直方向，起点在上沿*/
+      /*垂直布局，从上到下*/
       flex-direction: column;
     }
 
+    /*头部*/
     .main-header {
       height: 80px;
       display: flex;
-      /*两端对齐，项目之间的间隔都相等*/
+      /*flex两边对其，元素间距相等*/
       justify-content: space-between;
-      /*横向，贴底对其*/
+      /*flex横向排列，贴底对其*/
       align-items: flex-end;
-
       .mh-left {
-        font-size: 12px;
+        font-size: 20px;
         color: rgb(1, 134, 187);
         a:visited {
           color: rgb(1, 134, 187);
@@ -86,16 +133,20 @@ export default {
       }
     }
 
+    /*主要内容*/
     .main-container {
+      font-size: 12px;
+      /*总高度，减去标题高度*/
       height: calc(~"100% - 80px");
       .border-box-content {
         padding: 20px;
-        /*对元素指定宽度和高度包括了 padding 和 border ,就是告诉浏览器如何计算盒子宽高*/
+        /*计算盒子宽高的时候，包括padding和border */
         box-sizing: border-box;
         display: flex;
       }
     }
 
+    /*左边容器*/
     .left-chart-container {
       width: 22%;
       padding: 10px;
@@ -104,6 +155,28 @@ export default {
         flex-direction: column;
       }
     }
-  }
 
+    /*右边容器*/
+    .right-main-container {
+      width: 78%;
+      padding-left: 5px;
+      box-sizing: border-box;
+    }
+    .rmc-top-container {
+      height: 65%;
+      display: flex;
+    }
+    .rmctc-left-container {
+      width: 65%;
+    }
+    .rmctc-right-container {
+      width: 35%;
+    }
+    .rmc-bottom-container {
+      height: 35%;
+    }
+    .rmctc-chart-1, .rmctc-chart-2 {
+      height: 50%;
+    }
+  }
 </style>
