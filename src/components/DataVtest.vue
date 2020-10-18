@@ -85,7 +85,39 @@ export default {
     BottomCharts
   },
   data () {
-    return {}
+    return {
+    }
+  },
+  mounted () {
+    this.updateL()
+  },
+  methods: {
+    random (min, max) {
+      // 若max不存在 min 赋值给max,并重新赋值min
+      if (max == null) {
+        max = min
+        min = 0
+      }
+      return min + Math.floor(Math.random() * (max - min + 1))
+    },
+    updateL () {
+      let vue = this
+      let v = this.$store
+      setInterval(() => {
+        let optionOne = {
+          columns: ['日期', '访问用户', '下单用户', '下单率'],
+          rows: [
+            {'日期': '1/1', '访问用户': vue.random(2000), '下单用户': vue.random(2000), '下单率': Math.random()},
+            {'日期': '1/2', '访问用户': vue.random(2000), '下单用户': vue.random(2000), '下单率': Math.random()},
+            {'日期': '1/3', '访问用户': vue.random(2000), '下单用户': vue.random(2000), '下单率': Math.random()},
+            {'日期': '1/4', '访问用户': vue.random(2000), '下单用户': vue.random(2000), '下单率': Math.random()},
+            {'日期': '1/5', '访问用户': vue.random(2000), '下单用户': vue.random(2000), '下单率': Math.random()},
+            {'日期': '1/6', '访问用户': vue.random(2000), '下单用户': vue.random(2000), '下单率': Math.random()}
+          ]
+        }
+        v.commit('updateLineTest', optionOne)
+      }, 2000)
+    }
   }
 }
 </script>
@@ -100,6 +132,7 @@ export default {
     color: #fff;
 
     /*全屏容器*/
+
     #dv-full-screen-container {
       background-image: url('../assets/bg.png');
       background-size: 100% 100%;
@@ -111,6 +144,7 @@ export default {
     }
 
     /*头部*/
+
     .main-header {
       height: 80px;
       display: flex;
@@ -118,26 +152,32 @@ export default {
       justify-content: space-between;
       /*flex横向排列，贴底对其*/
       align-items: flex-end;
+
       .mh-left {
         font-size: 20px;
         color: rgb(1, 134, 187);
+
         a:visited {
           color: rgb(1, 134, 187);
         }
       }
+
       .mh-middle {
         font-size: 30px;
       }
+
       .mh-left, .mh-right {
         width: 450px;
       }
     }
 
     /*主要内容*/
+
     .main-container {
       font-size: 12px;
       /*总高度，减去标题高度*/
       height: calc(~"100% - 80px");
+
       .border-box-content {
         padding: 20px;
         /*计算盒子宽高的时候，包括padding和border */
@@ -147,36 +187,44 @@ export default {
     }
 
     /*左边容器*/
+
     .left-chart-container {
       width: 22%;
       padding: 10px;
       box-sizing: border-box;
+
       .border-box-content {
         flex-direction: column;
       }
     }
 
     /*右边容器*/
+
     .right-main-container {
       width: 78%;
       padding-left: 5px;
       box-sizing: border-box;
     }
+
     .rmc-top-container {
       height: 65%;
       display: flex;
       /*默认*/
       flex-direction: row;
     }
+
     .rmctc-left-container {
       width: 65%;
     }
+
     .rmctc-right-container {
       width: 35%;
     }
+
     .rmc-bottom-container {
       height: 35%;
     }
+
     .rmctc-chart-1, .rmctc-chart-2 {
       height: 50%;
     }

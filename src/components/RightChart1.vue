@@ -1,7 +1,7 @@
 <template>
   <div class="right-chart-1">
     <div class="rc1-header" style="flex-grow: 0">赵六收费站</div>
-    <div style="flex-grow: 1;background-color: darkgray">
+    <div style="flex-grow: 1">
       <ve-pie :data="chartData"
               height="100%"
               :settings="chartSettings"
